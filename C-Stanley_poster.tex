@@ -236,27 +236,27 @@ Moreover, the weight of a unimodal factorization is equal to the weight of a pri
 
 \begin{block}{Lowering operator $f_i$ on Primed Tableau}
 
-We can introduce a crystal structure on the set $\mathcal{PT} (\lambda)$ instead and induce the structure on $U^{\pm}(w)$ via the Kra\'skiewicz insertion. It is convenient to define the crystal operators on the subset of $\mathcal{PT} (\lambda)$ with no primed elements on the diagonal, and extend the action on the whole set afterwards.
+We can introduce a crystal structure on the set $\mathcal{PT} (\lambda)$ instead and induce the structure on $U^{\pm}(w)$ via the Kra\'skiewicz insertion. It is convenient to define the crystal operators on the subset of $\mathcal{PT} (\lambda)$ with no primed elements on the diagonal, and extend the action on the whole set afterwards. Consider a primed tableau $\mathbf{T}$.
 
-\begin{enumerate}
+\begin{itemize}
+\item Construct the \textit{reading word}  $\mathrm{rw}(\mathbf{T})$ as follows:
 
-\item 
+	\begin{enumerate}
+	\item List all primed letters in the tableau, column by column, in decreasing order within each column, moving from the rightmost column to the left, and with all the primes removed.
+	\item Then list all unprimed elements, row by row, in increasing order within each row, moving from the bottommost row to the top.
+	\end{enumerate}
 
-\end{enumerate}
+\item Apply a bracketing rule for letters $i$ and $i+1$ in $\mathrm{rw}(\mathbf{T})$ to find an $i$ that operator $f_i$ would act on. If no such $i$ exist, the operator $f_i$ is not defined for $\mathbf{T}$.
 
+\item An example of the crystal structure for $\mathcal{PT} ((3,1))$ is shown below.
 
-\end{block}
-
-
-%----------------------------------------------------------------------------------------
-%	PICTURE
-%----------------------------------------------------------------------------------------
-
-\begin{block}{Crystal}
 \begin{figure}[h]
 \includegraphics[width=25cm, height=40cm]{Crystal}
 \centering
 \end{figure}
+
+\end{itemize}
+
 \end{block}
 
 
