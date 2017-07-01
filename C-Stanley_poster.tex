@@ -13,6 +13,7 @@
 \usepackage{lipsum,  verbatim}
 \usepackage{mathtools}
 \usepackage{txfonts}
+\usepackage{wrapfig}
 
 \newtheorem{proposition}[theorem]{Proposition}
 
@@ -107,10 +108,10 @@
 
 \begin{alertblock}{Goal}
 
-It is known that Stanley symmetric functions are Shur-positive, i.e. the coefficients of the Shur expantion are non-negative. 
+It is known that Stanley symmetric functions are Schur-positive, i.e. the coefficients of the Schur expansion are non-negative. 
 Our goal here is to introduce a crystal structure on the set of unimodal factorizations that is isomorphic to the crystal structure of type-A crystal.
 
-In particular, we use Kra\'skiewicz insertion~\cite{Kraskiewicz.1989,Kraskiewicz.1995} to use the notion of Primed Tableaux and introduce crystal operators on those tableaux instead.
+In particular, we use Kra\'skiewicz insertion to use the notion of Primed Tableaux and introduce crystal operators on those tableaux instead.
 
 \end{alertblock}
 
@@ -144,18 +145,27 @@ In particular, we use Kra\'skiewicz insertion~\cite{Kraskiewicz.1989,Kraskiewicz
 \item Given unimodal factorization $\mathbf{A}$, define its \textit{weight} $\wt(\mathbf{A})$ to be the vector 
 consisting of the number of elements in each factor, and $\nz(\mathbf{A})$ to be the number of non-empty factors.
 
+
 \item \textit{Type-C Stanley symmetric function} is defined as 
 $$F^C_w(\mathbf{x}) = \sum_{\mathbf{A} \in U(w)} 2^{\nz(\mathbf{A})} \mathbf{x}^{\wt(\mathbf{A})}.$$
 \end{itemize}
+\vskip 15pt
 
-\textbf{Type-A crystals and Schur Functions}
-\begin{itemize}
-\item Consider the set of words $\mathcal{B}_n^h$ of length $h$ in the alphabet $\{1,2,\ldots,n+1\}$, with no equivalency relations. We impose a crystal structure on $\mathcal{B}_n^h$ by defining lowering operators $f_i$ and raising operators $e_i$ for $1\leqslant i \leqslant n$ and a weight function.
-\item The weight of $\mathbf{b} \in \mathcal{B}_n^h$ is the tuple $\wt(\mathbf{b}) = (a_1,\ldots, a_{n+1})$, where $a_i$ is the number of letters $i$ in $\mathbf{b}$.
-\item Lowering operator $f_i$ acts on $\mathbf{b}$ by changing a particular letter $i$ to $i+1$ if such letter exists, and is not defined otherwise. Raising operator $e_i$ acts as the inverse of $f_i$.
-\item Crystal operators induce digraph structure on $\mathcal{B}_n^h$, with the character of each connected component equal to a symmetric Schur polynomial $s_{\lambda}(x_1,\ldots,x_{n+1})$ with $\lambda\vdash h$.
-\item In the limit $n\to\infty$ Shur polynomials become Schur functions $s_\lambda(\mathbf{x})$. Shur functions form an orthonormal basis to the vector space of symmetric functions with integer coefficients.
-\end{itemize}
+\begin{wrapfigure}{r}{0.16\textwidth}
+\includegraphics[scale=1.6]{Crystal_Young}
+\centering
+\end{wrapfigure}
+
+\textbf{Type-A crystals and Schur Functions}\vskip 10pt
+
+An example of a crystal of type $A_2$ is shown to the right.
+
+To define a crystal, one needs to define crystal operators $f_i$, which induce digraph structure, which splits the set into several components.
+
+Each connected component is determined by the highest weight element, and the character of each connected component equal to a symmetric Schur polynomial $s_{\lambda}(x_1,\ldots,x_{n+1})$ with $\lambda\vdash h$.
+
+In the limit $n\to\infty$ Schur polynomials become Schur functions $s_\lambda(\mathbf{x})$. Schur functions form an orthonormal basis to the vector space of symmetric functions with integer coefficients.
+
 
 \end{block}
 
@@ -186,7 +196,7 @@ boxes in positions $(i,j)$ satisfying $1\leqslant i\leqslant \ell$ and $ i\leqsl
 	\item $P_i$ is the longest unimodal subsequence in a concatenated word $P_{i+1}P_i$,
 	\item the concatenated word $P_\ell P_{\ell-1} \ldots P_1$ a reduced type-C word that represents $w$.
 	\end{itemize}
-\item For example, unimodal tableau $\young(43201,:212)$ corresponds to $w=s_2 s_1 s_2 s_4 s_3 s_2 s_0 s_1$.
+\item For example, unimodal tableau $\small\young(43201,:212)$ corresponds to $w=s_2 s_1 s_2 s_4 s_3 s_2 s_0 s_1$.
 \end{itemize}
 
 \textbf{Primed Tableaux}
@@ -199,7 +209,7 @@ with letters from the alphabet $\{1' < 1 < 2'< 2< \cdots <m' < m\}$ such that:
 	\item Each column contains at most one $i$ for every $i = 1,\ldots,m$.
 	\end{itemize}
 \item The weight of a primed tableau, denoted by $\wt(\mathbf{T})$, is the vector with $i$-th coordinate equal to the total number of letters in $\mathbf{T}$ that are either $i$ or $i'$.
-\item For example, $\young(11\twop\threep3,:\twop2\threep)$ is a primed tableau of weight $(2,3,3)$.
+\item For example, $\small\young(11\twop\threep3,:\twop2\threep)$ is a primed tableau of weight $(2,3,3)$.
 \end{itemize}
 
 \end{block}
@@ -212,9 +222,9 @@ with letters from the alphabet $\{1' < 1 < 2'< 2< \cdots <m' < m\}$ such that:
 
 The Kra\'skiewicz insertion gives a bijection 
 \begin{equation*}
-\mathrm{KR}\colon U^{\pm}(w) \rightarrow \bigcup_{\lambda} \big[\mathcal{UT}_w (\lambda) \times \mathcal{PT} (\lambda)\big],
+\mathrm{KR}\colon U^{\pm}(w) \rightarrow \bigcup_{\lambda} \big[\mathcal{UT}_w (\lambda) \times \mathcal{PT}^\pm (\lambda)\big],
 \end{equation*}
-where $U^{\pm}(w)$ is the set of all unimodal factorizations of $w$ with a sign assigned to each non-zero factor, $\mathcal{UT}_w (\lambda)$ is the set of all unimodal tableaux of shape $\lambda$ associated with $w$, and $\mathcal{PT} (\lambda)$ is the set of all primed tableaux of shape $\lambda$.
+where $U^{\pm}(w)$ is the set of all unimodal factorizations of $w$ with a sign assigned to each non-zero factor, $\mathcal{UT}_w (\lambda)$ is the set of all unimodal tableaux of shape $\lambda$ associated with $w$, and $\mathcal{PT}^\pm (\lambda)$ is the set of all primed tableaux of shape $\lambda$.
 
 Moreover, the weight of a unimodal factorization is equal to the weight of a primed tableau in the image.
 
@@ -228,7 +238,7 @@ Moreover, the weight of a unimodal factorization is equal to the weight of a pri
 
 \begin{column}{\sepwid}\end{column} % Empty spacer column
 
-\begin{column}{\onecolwid} % The third column
+\begin{column}{\onecolwid}\vspace{-.6in} % The third column
 
 %----------------------------------------------------------------------------------------
 %	OPERATORS
@@ -236,7 +246,10 @@ Moreover, the weight of a unimodal factorization is equal to the weight of a pri
 
 \begin{block}{Lowering operator $f_i$ on Primed Tableau}
 
-We can introduce a crystal structure on the set $\mathcal{PT} (\lambda)$ instead and induce the structure on $U^{\pm}(w)$ via the Kra\'skiewicz insertion. It is convenient to define the crystal operators on the subset of $\mathcal{PT} (\lambda)$ with no primed elements on the diagonal, and extend the action on the whole set afterwards. Consider a primed tableau $\mathbf{T}$.
+We can introduce a crystal structure on the set $\mathcal{PT} (\lambda)$ instead and induce the structure on $U^{\pm}(w)$ via the Kra\'skiewicz insertion. 
+In particular, we obtain the Schur expansion of the characteristic function of $\mathcal{PT}^\pm (\lambda)$, also known as $Q$-Schur function, and get the expansion of type-C Stanley symmetric function by summing over all elements of $\mathcal{UT}_w (\lambda)$.
+
+It is convenient to define the crystal operators on the subset of $\mathcal{PT}^\pm (\lambda)$ with no primed elements on the diagonal (denoted by $\mathcal{PT} (\lambda)$), and extend the action on the whole set afterwards. Consider a primed tableau $\mathbf{T}$.
 
 \begin{itemize}
 \item Construct the \textit{reading word}  $\mathrm{rw}(\mathbf{T})$ as follows:
@@ -248,26 +261,38 @@ We can introduce a crystal structure on the set $\mathcal{PT} (\lambda)$ instead
 
 \item Apply a bracketing rule for letters $i$ and $i+1$ in $\mathrm{rw}(\mathbf{T})$ to find an $i$ that operator $f_i$ would act on. If no such $i$ exist, the operator $f_i$ is not defined for $\mathbf{T}$.
 
-\item An example of the crystal structure for $\mathcal{PT} ((3,1))$ is shown below.
+\item As an example, crystal structure for $\mathcal{PT} ((3,1))$ is shown below.
+\end{itemize}
 
-\begin{figure}[h]
-\includegraphics[width=25cm, height=40cm]{Crystal}
+
+\begin{wrapfigure}[27]{l}{0.55\textwidth}
+\includegraphics[scale=1.6]{Crystal_Shifted}
 \centering
-\end{figure}
+\end{wrapfigure}
 
-\end{itemize}
+ Schur expansion of the characteristic function of $\mathcal{PT} ((3,1))$, also known as $P$-Schur function, is
+ \begin{equation*}
+ P_{(3,1)} = s_{(2,1,1)} + s_{(3,1)} + s_{(2,2)}.
+ \end{equation*}
+ 
+ Characteristic function of $\mathcal{PT}^\pm ((3,1))$ is
+ \begin{equation*}
+ Q_{(3,1)} = 4 P_{(3,1)}.
+ \end{equation*}
+ 
+ And, finally, taking long Coxeter group element $$w=s_0 s_1 s_0 s_1,$$ characteristic function of $U^\pm_w$ is
+ \begin{equation*}
+ F^C_w = 4 s_{(2,1,1)} + 4 s_{(3,1)} + 4 s_{(2,2)},
+ \end{equation*}
+ since there is only one unimodal tableau corresponding to $w$, namely
+ 
+ \begin{equation*}
+ \small\young(101,:0)\ .
+ \end{equation*}
+
+In general, the highest weight elements of $\mathcal{PT} (\lambda)$ are exactly the ones with Yamanouchi reading words, and Schur expansion of $F^C_w$ can be found similarly.
 
 \end{block}
-
-
-\begin{block}{Bibliography}
-
-\begin{itemize}
-\item
-\end{itemize}
-
-\end{block}
-
 
 %----------------------------------------------------------------------------------------
 
