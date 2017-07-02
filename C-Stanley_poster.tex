@@ -8,6 +8,7 @@
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath, amsthm, amssymb, latexsym}
+\usepackage{mathrsfs}
 \usepackage{graphics, graphicx, xcolor}
 \usepackage[vcentermath, enableskew]{youngtab}
 \usepackage{lipsum,  verbatim}
@@ -15,32 +16,14 @@
 \usepackage{txfonts}
 \usepackage{wrapfig}
 
-\newtheorem{proposition}[theorem]{Proposition}
-
-\theoremstyle{definition}
-\newtheorem{remark}[theorem]{Remark}
-\numberwithin{equation}{section}
+\definecolor{darkred}{rgb}{0.7,0,0} % darkred color
+\newcommand{\darkred}{\color{darkred}} % darkred command
+\newcommand{\defn}[1]{\emph{\darkred #1}} % emphasis of a definition
 
 \newcommand{\onep}{1'}
 \newcommand{\twop}{2'}
 \newcommand{\threep}{3'}
 \newcommand{\fourp}{4'}
-\newcommand{\fivep}{5'}
-\newcommand{\sixp}{6'}
-\newcommand{\sevenp}{7'}
-\newcommand{\eightp}{8'}
-\newcommand{\ninep}{9'}
-\newcommand{\iprime}{i'}
-\newcommand{\jprime}{j'}
-\newcommand{\minustwop}{\textrm{-}2'}
-\newcommand{\minusonep}{\textrm{-}1'}
-\newcommand{\minustwo}{\textrm{-}2}
-\newcommand{\minusone}{\textrm{-}1}
-\newcommand{\boldtwo}{\mathbf{2}}
-\newcommand{\boldthree}{\mathbf{3}}
-\newcommand{\boldtwop}{\mathbf{2'}}
-\newcommand{\boldthreep}{\mathbf{3'}}
-\newcommand{\boldi}{\boldsymbol{i}}
 
 \newcommand{\wt}{\mathrm{wt}}
 \newcommand{\nz}{\mathrm{nz}}
@@ -108,8 +91,7 @@
 
 \begin{alertblock}{Goal}
 
-It is known that Stanley symmetric functions are Schur-positive, i.e. the coefficients of the Schur expansion are non-negative. 
-Our goal here is to introduce a crystal structure on the set of unimodal factorizations that is isomorphic to the crystal structure of type-A crystal.
+It is known that Stanley symmetric functions are Schur-positive. Our goal here is to introduce a crystal structure on the set of unimodal factorizations that is isomorphic to the crystal structure of type-A crystal and provide a combinatorial description of coefficients in Schur expansion in terms of highest weight elements.
 
 In particular, we use Kra\'skiewicz insertion to use the notion of Primed Tableaux and introduce crystal operators on those tableaux instead.
 
@@ -125,7 +107,7 @@ In particular, we use Kra\'skiewicz insertion to use the notion of Primed Tablea
 \begin{column}{\onecolwid}\vspace{-.8in}
 
 
-\begin{block}{Background}
+\begin{block}{Background and Notation}
 
 \textbf{Stanley Symmetric Functions}
 \begin{itemize}
@@ -136,17 +118,21 @@ In particular, we use Kra\'skiewicz insertion to use the notion of Primed Tablea
 	\item $s_i s_{i+1} s_i = s_{i+1} s_i s_{i+1}$ for all $i>0$,
 	\item $s_0 s_1 s_0 s_1 = s_1 s_0 s_1 s_0$.
 	\end{itemize}
-\item Each Coxeter group element $w=s_{i_1}\ldots s_{i_l}$ is represented by a word $i_1\ldots i_l$ and many other equivalent words. Among those, the words of shortest length are called \textit{reduced words}.
+\item Each Coxeter group element $w=s_{i_1}\ldots s_{i_l}$ is represented by a word $i_1\ldots i_l$ and many other equivalent words. Among those, the words of shortest length are called \defn{reduced words}.
 
-\item A word $i_1\ldots i_l$ is called unimodal if there exists an index $\nu$ with $i_1 > \ldots > i_\nu < \ldots < i_l$.  \textit{Unimodal factorization} of a Coxeter group element $w$ is a factorization of its reduced word into unimodal factors. Denote the set of unimodal factorizations of $w$ as $U(w)$.
+\item A word $i_1\ldots i_l$ is called unimodal if there exists an index $\nu$ with $i_1 > \ldots > i_\nu < \ldots < i_l$.  A \defn{unimodal factorization} of a Coxeter group element $w$ is a factorization of its reduced word into unimodal factors. Denote the set of unimodal factorizations of $w$ as $U(w)$.
 
-\item For example, given $w=s_2 s_1 s_2 s_0 s_1 s_0$, some of the elements of $U(w)$ are $(212)(0)(10),\ (21)()(201)(0),\ (1)(2101)(0),\ ()(12)(01)(01)$.
+\end{itemize}
 
-\item Given unimodal factorization $\mathbf{A}$, define its \textit{weight} $\wt(\mathbf{A})$ to be the vector 
+\textit{Example.} For $w=s_2 s_1 s_2 s_0 s_1 s_0$, some of the elements of $U(w)$ are $(212)(0)(10)$, $(21)()(201)(0)$, $(1)(2101)(0)$, $()(12)(01)(01)$.
+
+
+\begin{itemize}
+
+\item Given a unimodal factorization $\mathbf{A}$, define its \defn{weight} $\wt(\mathbf{A})$ to be the vector 
 consisting of the number of elements in each factor, and $\nz(\mathbf{A})$ to be the number of non-empty factors.
 
-
-\item \textit{Type-C Stanley symmetric function} is defined as 
+\item \defn{Type-C Stanley symmetric function} is defined as 
 $$F^C_w(\mathbf{x}) = \sum_{\mathbf{A} \in U(w)} 2^{\nz(\mathbf{A})} \mathbf{x}^{\wt(\mathbf{A})}.$$
 \end{itemize}
 \vskip 15pt
@@ -160,12 +146,15 @@ $$F^C_w(\mathbf{x}) = \sum_{\mathbf{A} \in U(w)} 2^{\nz(\mathbf{A})} \mathbf{x}^
 
 An example of a crystal of type $A_2$ is shown to the right.
 
-To define a crystal, one needs to define crystal operators $f_i$, which induce digraph structure, which splits the set into several components.
+To define a crystal, one needs to define crystal operators $f_i$, which induce digraph structure, which splits the set into several connected components.
 
-Each connected component is determined by the highest weight element, and the character of each connected component equal to a symmetric Schur polynomial $s_{\lambda}(x_1,\ldots,x_{n+1})$ with $\lambda\vdash h$.
+Each connected component is determined by the highest weight element, and the character of each connected component is a Schur polynomial.
+\vskip 15pt
 
-In the limit $n\to\infty$ Schur polynomials become Schur functions $s_\lambda(\mathbf{x})$. Schur functions form an orthonormal basis to the vector space of symmetric functions with integer coefficients.
+\textbf{Characteristic Function}\vskip 10pt
 
+Given a set $\mathcal{S}$ with and a weight function $\wt(s)$ on $\mathcal{S}$, the \defn{characteristic function} of $\mathcal{S}$ is defined as
+$$\chi_{\mathcal{S}} (\mathbf{x}) = \sum_{s \in \mathcal{S}} \mathbf{x}^{\wt(s)}.$$
 
 \end{block}
 
@@ -184,13 +173,13 @@ In the limit $n\to\infty$ Schur polynomials become Schur functions $s_\lambda(\m
 
 \begin{block}{Unimodal Tableaux and Shifted Primed Tableaux}
 
-A \textit{shifted diagram} $\mathcal{S}(\lambda)$ associated to a partition $\lambda = (\lambda_1,\ldots,\lambda_\ell)$ with $\lambda_i > \lambda_{i+1}$ is the set of 
+A \defn{shifted diagram} $\mathcal{S}(\lambda)$ associated to a partition $\lambda = (\lambda_1,\ldots,\lambda_\ell)$ with $\lambda_i > \lambda_{i+1}$ is the set of 
 boxes in positions $(i,j)$ satisfying $1\leqslant i\leqslant \ell$ and $ i\leqslant j\leqslant \lambda_i+i-1$.
 
 \textbf{Unimodal Tableaux}
 \begin{itemize}
 
-\item A \textit{unimodal tableau} $\mathbf{P}$ of shape $\lambda$ associated to a Coxeter group element $w$ of type $C_n$ is a filling of a shifted diagram $\mathcal{S}(\lambda)$ with letters from the alphabet \small$\{0< 1 < 2< \cdots < n-1\}\ $\normalsize such that
+\item A \defn{unimodal tableau} $\mathbf{P}$ of shape $\lambda$ associated to a Coxeter group element $w$ of type $C_n$ is a filling of a shifted diagram $\mathcal{S}(\lambda)$ with letters from the alphabet \small$\{0< 1 < 2< \cdots < n-1\}\ $\normalsize such that
 	\begin{itemize}
 	\item the rows of $\mathbf{P}$, denoted by $P_1, \ldots, P_\ell$, are unimodal words,
 	\item $P_i$ is the longest unimodal subsequence in a concatenated word $P_{i+1}P_i$,
@@ -201,14 +190,14 @@ boxes in positions $(i,j)$ satisfying $1\leqslant i\leqslant \ell$ and $ i\leqsl
 
 \textbf{Primed Tableaux}
 \begin{itemize}
-\item A \textit{primed tableau} $\mathbf{T}$ of shape $\lambda$ on $n$ letters is a filling of $\mathcal{S}(\lambda)$ 
+\item A \defn{primed tableau} $\mathbf{T}$ of shape $\lambda$ on $n$ letters is a filling of $\mathcal{S}(\lambda)$ 
 with letters from the alphabet \small$\{1' < 1 < 2'< 2< \cdots <m' < m\}\ $\normalsize such that:
 	\begin{itemize}
 	\item The entries are weakly increasing along each column and each row of $\mathbf{T}$.
 	\item Each row contains at most one $i'$ for every $i = 1,\ldots,m$.
 	\item Each column contains at most one $i$ for every $i = 1,\ldots,m$.
 	\end{itemize}
-\item The weight of a primed tableau, denoted by $\wt(\mathbf{T})$, is the vector with $i$-th coordinate equal to the total number of letters in $\mathbf{T}$ that are either $i$ or $i'$.
+\item The \defn{weight} of a primed tableau, denoted by $\wt(\mathbf{T})$, is the vector with $i$-th coordinate equal to the total number of letters in $\mathbf{T}$ that are either $i$ or $i'$.
 \item For example, $\small\young(11\twop\threep3,:\twop2\threep)$ is a primed tableau of weight $(2,3,3)$.
 \end{itemize}
 
@@ -220,7 +209,7 @@ with letters from the alphabet \small$\{1' < 1 < 2'< 2< \cdots <m' < m\}\ $\norm
 
 \begin{alertblock}{Kra\'skiewicz insertion}
 
-The Kra\'skiewicz insertion gives a bijection 
+The \defn{Kra\'skiewicz insertion} gives a bijection 
 \begin{equation*}
 \mathrm{KR}\colon U^{\pm}(w) \rightarrow \bigcup_{\lambda} \big[\mathcal{UT}_w (\lambda) \times \mathcal{PT}^\pm (\lambda)\big],
 \end{equation*}
@@ -244,9 +233,9 @@ Moreover, the weight of a unimodal factorization is equal to the weight of a pri
 %	OPERATORS
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Lowering operator $f_i$ on Primed Tableau}
+\begin{block}{Lowering operator $f_i$ on Primed Tableaux}
 
-We can introduce a crystal structure on the set $\mathcal{PT} (\lambda)$ instead and induce the structure on $U^{\pm}(w)$ via the Kra\'skiewicz insertion. 
+We introduce a crystal structure on the set $\mathcal{PT}(\lambda)$ and induce the crystal structure on $U^\pm(w)$ via the Kra\'skiewicz insertion. 
 
 In particular, we obtain the Schur expansion of the characteristic function of $\mathcal{PT}^\pm (\lambda)$, also known as $Q$-Schur function, and get the expansion of type-C Stanley symmetric function by summing over all elements of $\mathcal{UT}_w (\lambda)$.
 
@@ -255,7 +244,7 @@ It is convenient to define the crystal operators on the subset of $\mathcal{PT}^
 Consider a primed tableau $\mathbf{T}$.
 
 \begin{itemize}
-\item Construct the \textit{reading word}  $\mathrm{rw}(\mathbf{T})$ as follows:
+\item Construct the \defn{reading word}  $\mathrm{rw}(\mathbf{T})$ as follows:
 
 	\begin{enumerate}
 	\item List all primed letters in the tableau, column by column, in decreasing order within each column, moving from the rightmost column to the left, and with all the primes removed.
@@ -273,7 +262,7 @@ Consider a primed tableau $\mathbf{T}$.
 \centering
 \end{wrapfigure}
 
- Schur expansion of the characteristic function of $\mathcal{PT} ((3,1))$, also known as $P$-Schur function, is
+ The Schur expansion of the characteristic function of $\mathcal{PT} ((3,1))$, also known as $P$-Schur function, is
  \begin{equation*}
  P_{(3,1)} = s_{(2,1,1)} + s_{(3,1)} + s_{(2,2)}.
  \end{equation*}
